@@ -15,18 +15,17 @@ public class OldEncode extends LinearOpMode {
     private DcMotor rightRear;
     private DcMotor leftFront;
     private DcMotor leftRear;
-    private Servo flipper;
+    //private Servo flipper;
     private DcMotor liftMotor;
 
     @Override
-
 
     public void runOpMode() {
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
-        flipper = hardwareMap.get(Servo.class,"flipper");
+        //flipper = hardwareMap.get(Servo.class,"flipper");
         liftMotor = hardwareMap.get(DcMotor.class,"liftMotor");
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
