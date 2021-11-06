@@ -34,22 +34,13 @@ public class OldEncode extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            richmove(1000, 1000, 1000, 1000);
-            richmove(-1000, -1000, 1000, 1000);
-            richmove(1000, 1000, 1000, 1000);
-            lift(1000);
-            richmove(1000, 1000, -1000, -1000);
-           lift(-1000);
-            richmove(0, 0, 0, 0);
-            flipper.setPosition(1.0);
-            flipper.setPosition(0.5);
-            flipper.setPosition(0.0);
-            richmove(1000, 1000, 1000, 1000);
-            flipper.setPosition(0.5);
+          move(1000,1000,1000,1000);
+          move(500,500,-500,-500);
+          move(0,0,0,0);
+          lift(100);
+          lift(0);
 
 
-
-            sleep(4000);
             /*rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -97,7 +88,7 @@ public class OldEncode extends LinearOpMode {
 
 
     //----------------------------encoder-----------------
-    public void richmove(int rf, int rb, int lf, int lb) {
+    public void move(int rf, int rb, int lf, int lb) {
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -136,6 +127,8 @@ public class OldEncode extends LinearOpMode {
 
 
     }
+    //===============================lift====================
+
 
 
 
