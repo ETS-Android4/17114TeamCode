@@ -1,17 +1,13 @@
 package org.firstinspires.ftc.teamcode.OpModes;
 
-import static java.lang.Math.*;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
 
-public class OldEncode extends LinearOpMode {
+public class BlueWarehouse extends LinearOpMode {
     // Declare our motors
     // Make sure your ID's match your configuration
     private DcMotor rightFront;
@@ -36,14 +32,12 @@ public class OldEncode extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-          move(1000,1000,1000,1000);
-          move(500,500,-500,-500);
-          move(0,0,0,0);
-
-         duckMotor.setPower(0.7);
-         sleep(5000);
-
-          move(400,400,-400,-400);
+          move(-1500,-1500,-1500,-1500);//forward
+            sleep(500);
+         // move(1000,1000,1000,1000);//backward
+            move(750,750,-750,-750);
+            move(-500,-500,-500,-500);
+            sleep(250000);
 
 
             /*rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

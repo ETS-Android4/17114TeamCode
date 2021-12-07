@@ -1,17 +1,13 @@
 package org.firstinspires.ftc.teamcode.OpModes;
 
-import static java.lang.Math.*;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
 
-public class OldEncode extends LinearOpMode {
+public class DuckBlue extends LinearOpMode {
     // Declare our motors
     // Make sure your ID's match your configuration
     private DcMotor rightFront;
@@ -34,16 +30,16 @@ public class OldEncode extends LinearOpMode {
         rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
         liftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
-
+        //This is for going and spinning the ducks and then parking
         while (opModeIsActive()) {
-          move(1000,1000,1000,1000);
-          move(500,500,-500,-500);
-          move(0,0,0,0);
+          move(700,-700,-700,700);//sideways
+            sleep(500);
+            duckMotor.setPower(.5);//run duck motor for 2.5 sec
+            sleep(2500);
+            move(-800,-800,-800,-800);//forward
+            sleep(25000);
 
-         duckMotor.setPower(0.7);
-         sleep(5000);
 
-          move(400,400,-400,-400);
 
 
             /*rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -115,6 +111,45 @@ public class OldEncode extends LinearOpMode {
 
         leftFront.setPower(0.6);
         leftRear.setPower(0.6);
+
+        while (leftFront.isBusy() && leftRear.isBusy() && rightFront.isBusy() && rightRear.isBusy()) {
+            sleep(50);
+
+        }
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        rightRear.setPower(0);
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftRear.setPower(0);
+
+
+    }
+    public void movefast(int rf, int rb, int lf, int lb) {
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        rightFront.setTargetPosition(rf);
+        rightRear.setTargetPosition(rb);
+        leftFront.setTargetPosition(lf);
+        leftRear.setTargetPosition(lb);
+
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+        rightRear.setPower(0.8);
+        rightFront.setPower(0.8);
+
+        leftFront.setPower(0.8);
+        leftRear.setPower(0.8);
 
         while (leftFront.isBusy() && leftRear.isBusy() && rightFront.isBusy() && rightRear.isBusy()) {
             sleep(50);

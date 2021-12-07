@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp
-public class Mechanum2 extends LinearOpMode {
+@TeleOp (name = "Dug")
+public class Dug extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         // Declare our motors
@@ -20,9 +20,9 @@ public class Mechanum2 extends LinearOpMode {
         DcMotor leftRear = hardwareMap.dcMotor.get("leftRear");
         DcMotor rightFront = hardwareMap.dcMotor.get("rightFront");
         DcMotor rightRear = hardwareMap.dcMotor.get("rightRear");
-        CRServo liftMotor = hardwareMap.crservo.get("liftMotor");
-        CRServo intakeWheel = hardwareMap.crservo.get("intakeWheel");
-        CRServo duckMotor = hardwareMap.crservo.get("duckMotor");
+        DcMotor duckMotor = hardwareMap.dcMotor.get("duckMotor");
+        DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
+        CRServo intakeServo = hardwareMap.crservo.get("intakeServo");
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -53,30 +53,27 @@ public class Mechanum2 extends LinearOpMode {
 
             liftMotor.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
 
+
             if (gamepad1.a) {
-                intakeWheel.setPower(1);
+                intakeServo.setPower(1);
+            }
+            else if (gamepad1.y) {
+                intakeServo.setPower(-1);
             }
             else {
-                intakeWheel.setPower(0);
+                intakeServo.setPower(0);
             }
-            if (gamepad1.y) {
-                intakeWheel.setPower(-1);
-            }
-            else {
-                intakeWheel.setPower(0);
-            }
+
             if (gamepad1.x) {
                 duckMotor.setPower(1);
             }
-            else {
-                duckMotor.setPower(0);
-            }
-            if (gamepad1.b) {
+            else if(gamepad1.b) {
                 duckMotor.setPower(-1);
             }
             else {
                 duckMotor.setPower(0);
             }
+
         }
     }
 }
