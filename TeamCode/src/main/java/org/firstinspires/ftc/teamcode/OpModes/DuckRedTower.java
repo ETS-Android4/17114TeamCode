@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
 
-public class DuckBlue extends LinearOpMode {
+public class DuckRedTower extends LinearOpMode {
     // Declare our motors
     // Make sure your ID's match your configuration
     private DcMotor rightFront;
@@ -32,15 +32,15 @@ public class DuckBlue extends LinearOpMode {
         waitForStart();
         //This is for going and spinning the ducks and then parking
         while (opModeIsActive()) {
-            move(250,250,250,250);//backwards
-          move(-1800,1800,1800,-1800);//sidewaysL
-            moveslow(-180,180,180,-180);
+            move(200,-200,-200,200);//sidewaysR
+          move(-1000,-1000,-1000,-1000);//forwards
+            moveslow(-200,-200,-200,-200);//backwards
             sleep(500);
-            duckMotor.setPower(.5);//run duck motor for 2.5 sec
-            sleep(2600);
+            duckMotor.setPower(-.5);//run duck motor for 2.5 sec
+            sleep(2500);
+            moveslow(1300,-1300,-1300,1300);//sidewaysR
             duckMotor.setPower(0);
-            moveslow(900,900,900,900);//Backwards
-            move(-260,260,260,-260);
+            move(800,800,800,800);
             sleep(25000);
 
 

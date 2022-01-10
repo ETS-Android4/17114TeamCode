@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
 
-public class DuckBlue extends LinearOpMode {
+public class RedDuckWarehouse extends LinearOpMode {
     // Declare our motors
     // Make sure your ID's match your configuration
     private DcMotor rightFront;
@@ -32,59 +32,20 @@ public class DuckBlue extends LinearOpMode {
         waitForStart();
         //This is for going and spinning the ducks and then parking
         while (opModeIsActive()) {
-            move(250,250,250,250);//backwards
-          move(-1800,1800,1800,-1800);//sidewaysL
-            moveslow(-180,180,180,-180);
-            sleep(500);
-            duckMotor.setPower(.5);//run duck motor for 2.5 sec
-            sleep(2600);
-            duckMotor.setPower(0);
-            moveslow(900,900,900,900);//Backwards
-            move(-260,260,260,-260);
-            sleep(25000);
+         duckMotor.setPower(-.65);
+         move(-100,100,100,-100);//strafe left
+         move(1725, 1725, 1725, 1725 );//backward
+            sleep(250);
+            moveslow(70, 70, 70, 70);
+            sleep(2000);
+             duckMotor.setPower(0);
+             move(-500,-500,-500,-500);
+             move(185, -185, -185, 185);
+             move(-3600,-3600,-3600,-3600);
 
 
 
-
-            /*rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            rightFront.setTargetPosition(3000);
-            rightRear.setTargetPosition(3000);
-            leftFront.setTargetPosition(-3000);
-            leftRear.setTargetPosition(-3000);
-
-            rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            rightRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-
-
-            rightRear.setPower(0.6);
-            rightFront.setPower(0.6);
-            leftFront.setPower(0.6);
-            leftRear.setPower(0.6);
-
-           // leftFront.setPower(leftFront/ Math.abs(.6));
-            //leftRear.setPower(lb/(Math.abs(lb)));
-
-            while(leftFront.isBusy() && leftRear.isBusy() && rightFront.isBusy() && rightRear.isBusy()){
-                sleep(50);
-
-            }
-            rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            rightRear.setPower(0);
-            leftFront.setPower(0);
-            rightFront.setPower(0);
-            leftRear.setPower(0);
-*/
+             sleep(25000);
 
 
         }
@@ -93,29 +54,29 @@ public class DuckBlue extends LinearOpMode {
 
 
     //----------------------------encoder-----------------
-    public void move(int rf, int rb, int lf, int lb) {
-        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        rightFront.setTargetPosition(rf);
-        rightRear.setTargetPosition(rb);
-        leftFront.setTargetPosition(lf);
-        leftRear.setTargetPosition(lb);
+        public void move(int rf, int rb, int lf, int lb) {
+            rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rightRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            rightFront.setTargetPosition(rf);
+            rightRear.setTargetPosition(rb);
+            leftFront.setTargetPosition(lf);
+            leftRear.setTargetPosition(lb);
+
+            rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            rightRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-        rightRear.setPower(0.6);
-        rightFront.setPower(0.6);
+            rightRear.setPower(0.6);
+            rightFront.setPower(0.6);
 
-        leftFront.setPower(0.6);
-        leftRear.setPower(0.6);
-
+            leftFront.setPower(0.6);
+            leftRear.setPower(0.6);
         while (leftFront.isBusy() && leftRear.isBusy() && rightFront.isBusy() && rightRear.isBusy()) {
             sleep(50);
 
@@ -168,9 +129,10 @@ public class DuckBlue extends LinearOpMode {
         leftFront.setPower(0);
         rightFront.setPower(0);
         leftRear.setPower(0);
+// Fix move slow and put it as a command in code
 
 
-    }
+        }
     //===============================lift====================
 
 
@@ -207,7 +169,7 @@ public class DuckBlue extends LinearOpMode {
         liftMotor.setPower(0); //Might need to come out if lift  is falling
 
     }
-    public void moveslow(int rf, int rb, int lf, int lb) {
+    public void moveslow(int rf, int rb, int lf, int lb){
         rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -224,12 +186,11 @@ public class DuckBlue extends LinearOpMode {
         leftRear.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-        rightRear.setPower(0.4);
-        rightFront.setPower(0.4);
+        rightRear.setPower(0.3);
+        rightFront.setPower(0.3);
 
-        leftFront.setPower(0.4);
-        leftRear.setPower(0.4);
-
+        leftFront.setPower(0.3);
+        leftRear.setPower(0.3);
         while (leftFront.isBusy() && leftRear.isBusy() && rightFront.isBusy() && rightRear.isBusy()) {
             sleep(50);
 
@@ -244,7 +205,7 @@ public class DuckBlue extends LinearOpMode {
         rightFront.setPower(0);
         leftRear.setPower(0);
 
-
     }
+
 }
 

@@ -35,8 +35,9 @@ public class RedWarehouse extends LinearOpMode {
           move(-1500,-1500,-1500,-1500);//forward
             sleep(500);
          // move(1000,1000,1000,1000);//backward
-            move(-750,-750,750,750);
-            move(-500,-500,-500,-500);
+            move(-500,-500,500,500);
+            move(-950,-950,-950,-950);
+            move(-500,-500,500,500);
             sleep(250000);
 
 

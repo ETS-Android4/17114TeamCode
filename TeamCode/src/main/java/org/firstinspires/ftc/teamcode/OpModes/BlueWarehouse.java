@@ -32,10 +32,11 @@ public class BlueWarehouse extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-          move(-1500,-1500,-1500,-1500);//forward
+            move(-1500,-1500,-1500,-1500);//forward
             sleep(500);
-         // move(1000,1000,1000,1000);//backward
+            // move(1000,1000,1000,1000);//backward
             move(750,750,-750,-750);
+            move(-750,-750,-750,-750);
             move(-500,-500,-500,-500);
             sleep(250000);
 
@@ -141,7 +142,7 @@ public class BlueWarehouse extends LinearOpMode {
 
         liftMotor.setPower(0.6);
 
-        }
+    }
 
 
 
