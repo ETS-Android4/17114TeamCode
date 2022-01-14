@@ -22,7 +22,7 @@ public class Dug extends LinearOpMode {
         DcMotor rightRear = hardwareMap.dcMotor.get("rightRear");
         DcMotor duckMotor = hardwareMap.dcMotor.get("duckMotor");
         DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
-        CRServo intakeServo = hardwareMap.crservo.get("intakeServo");
+        Servo boxServo = hardwareMap.servo.get("boxServo");
         DcMotor intakeMotor = hardwareMap.dcMotor.get("intakeMotor");
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -52,39 +52,58 @@ public class Dug extends LinearOpMode {
             rightFront.setPower(frontRightPower);
             rightRear.setPower(backRightPower);
 
-            liftMotor.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
+            liftMotor.setPower(gamepad2.left_trigger - gamepad2.right_trigger);
+            intakeMotor.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
 
-
-            if (gamepad1.a) {
-                intakeServo.setPower(1);
+            if (gamepad2.a) {
+                boxServo.setPosition(.6);
             }
-            else if (gamepad1.y) {
-                intakeServo.setPower(-1);
+            else if (gamepad2.y) {
+                boxServo.setPosition(1);
             }
             else {
-                intakeServo.setPower(0);
+                boxServo.setPosition(1);
             }
 
-            if (gamepad1.x) {
+            if (gamepad2.x) {
                 duckMotor.setPower(.5);
             }
-            else if(gamepad1.b) {
+            else if(gamepad2.b) {
                 duckMotor.setPower(-.5);
             }
             else {
                 duckMotor.setPower(0);
             }
 
-            if (gamepad1.left_bumper) {
-                intakeMotor.setPower(.8);
+            if(gamepad2.x) {
+                duckMotor.setPower(duckMotor.getPower() + .0025);
+            } else if (gamepad2.b) {
+                duckMotor.setPower(duckMotor.getPower() - .0025);
+            }else {
+                duckMotor.setPower(0);
             }
-            else if(gamepad1.right_bumper) {
-                intakeMotor.setPower(-.8);
+
+            if (duckMotor.getPower() > .8) {
+                duckMotor.setPower(.8);
+            } else if (duckMotor.getPower() < -.8) {
+                duckMotor.setPower(-.8);
             }
-            else {
-                intakeMotor.setPower(0);
-            }
+
+
+            //if (gamepad1.right_bumper) {
+            //    intakeMotor.setPower(.8);
+            //}
+            //else if(gamepad1.left_bumper) {
+            //    intakeMotor.setPower(-.8);
+            //}
+            //else {
+            //    intakeMotor.setPower(0);
+            //}
 
         }
     }
+
+    //private void move(int a, double b) {
+
+    //}
 }
