@@ -26,6 +26,7 @@ public class Dug extends LinearOpMode {
         DcMotor intakeMotor = hardwareMap.dcMotor.get("intakeMotor");
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
+        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
         leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -56,9 +57,9 @@ public class Dug extends LinearOpMode {
             intakeMotor.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
 
             if (gamepad2.a) {
-                boxServo.setPosition(.6);
+                boxServo.setPosition(0.6);
             }
-            else if (gamepad2.y) {
+            else if(gamepad2.y) {
                 boxServo.setPosition(1);
             }
             else {
@@ -89,16 +90,15 @@ public class Dug extends LinearOpMode {
                 duckMotor.setPower(-.8);
             }
 
-
-            //if (gamepad1.right_bumper) {
-            //    intakeMotor.setPower(.8);
-            //}
-            //else if(gamepad1.left_bumper) {
-            //    intakeMotor.setPower(-.8);
-            //}
-            //else {
-            //    intakeMotor.setPower(0);
-            //}
+            if (gamepad1.right_bumper) {
+                intakeMotor.setPower(.8);
+            }
+            else if(gamepad1.left_bumper) {
+                intakeMotor.setPower(-.8);
+            }
+            else {
+                intakeMotor.setPower(0);
+            }
 
         }
     }

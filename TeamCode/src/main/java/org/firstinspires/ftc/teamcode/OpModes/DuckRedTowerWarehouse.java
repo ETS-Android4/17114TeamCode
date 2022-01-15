@@ -30,12 +30,12 @@ public class DuckRedTowerWarehouse extends LinearOpMode {
         liftMotor = hardwareMap.get(DcMotor.class, "liftMotor");
         DcMotor duckMotor = hardwareMap.dcMotor.get("duckMotor");
        // DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
-        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        //rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
         liftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //boxServo.setPosition(1);
         waitForStart();
-        //spins duck, block on top level, park in colored warehouse
+        //spins duck, block on top level, park in warehouse
         while (opModeIsActive()) {
             move(300,-300,-300,300);//sidewaysR
             move(-950,-950,-950,-950);//forwards
@@ -46,17 +46,17 @@ public class DuckRedTowerWarehouse extends LinearOpMode {
             moveslow(1750,-1750,-1750,1750);//sidewaysR
             duckMotor.setPower(0);
             move(1006,1006,1006,1006);//backwards
-            liftup(-2000);//lift up with positive actually moves the lift downward
+            liftup(-1700);//lift up with negative moves the lift upward
             boxServo.setPosition(0.6);
             sleep(1000);//could be a add
             boxServo.setPosition(1);
             //moveslow(300,300,300,300);
-            liftup(2000);// puts lift down
+            liftdown(1350);// puts lift down was 1500
             sleep(1000);//could be a add
             move(-200,-200,-200,-200);//forwards
             move(-1950,1950,1950,-1950);//sidewaysL
             move(3800,3800,3800,3800);//backwards
-            move(-1000, 1000, 1000, -1000 );
+            move(-1000, -1000, -1000, -1000 );
             sleep(25000);
 
 

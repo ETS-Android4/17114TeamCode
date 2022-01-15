@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
 
-public class DuckBlueTowerWarehouse extends LinearOpMode {
+public class RedDucky extends LinearOpMode {
     // Declare our motors
     // Make sure your ID's match your configuration
     private DcMotor rightFront;
@@ -29,35 +29,21 @@ public class DuckBlueTowerWarehouse extends LinearOpMode {
         liftMotor = hardwareMap.get(DcMotor.class, "liftMotor");
         DcMotor duckMotor = hardwareMap.dcMotor.get("duckMotor");
        // DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
-        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        //rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
         liftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //boxServo.setPosition(1);
         waitForStart();
-        //spins duck, block on top level, park in colored warehouse
+        //spins duck, block on top level, park in warehouse
         while (opModeIsActive()) {
-            move(200,200,200,200);//backwards
-            move(950,-950,-950,950);//sidewaysR
-            moveslow(190,-190,-190,190);//sidewaysR
+            move(300,-300,-300,300);//sidewaysR
+            move(-950,-950,-950,-950);//forwards
+            moveslow(-190,-190,-190,-190);//forwards
             sleep(500);
             duckMotor.setPower(-.5);//run duck motor for 2.5 sec
             sleep(2500);
-            moveslow(1750,1750,1750,1750);//backwards
+            moveslow(1750,-1750,-1750,1750);//sidewaysR
             duckMotor.setPower(0);
-            moveslow(500, 500, -500, -500);//turnleft
-            move(1006,1006,1006,1006);//backwards
-            liftup(-1700);//lift up with negative moves the lift upward
-            boxServo.setPosition(0.6);
-            sleep(3000);//could be a add
-            boxServo.setPosition(1);
-            // move slow(300,300,300,300);
-            liftdown(1500);// puts lift down
-            sleep(1000);//could be a add
-            move(-200,-200,-200,-200);//forwards
-            move(1950,-1950,-1950,1950);//sidewaysL
-            move(3800,3800,3800,3800);//backwards
-            move(-1000, -1000, -1000, -1000 );
-            sleep(25000);
 
 
 
